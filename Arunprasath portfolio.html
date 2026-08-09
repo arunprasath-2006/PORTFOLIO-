@@ -1,0 +1,4090 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Arunprasath M | Data Science Portfolio</title>
+
+<!-- GOOGLE FONT -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+
+    --bg:#050816;
+    --bg2:#080d20;
+
+    --blue:#00aaff;
+    --cyan:#00e5ff;
+
+    --purple:#8b5cf6;
+    --pink:#ff3cac;
+
+    --orange:#ff9d00;
+    --red:#ff3b5c;
+
+    --white:#ffffff;
+
+    --text:#eaf6ff;
+    --muted:#91a4bd;
+
+    --glass:rgba(255,255,255,.065);
+    --border:rgba(255,255,255,.11);
+
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:"Inter",sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(0,170,255,.14),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(139,92,246,.12),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(255,60,172,.09),
+            transparent 35%
+        ),
+
+        var(--bg);
+
+    color:var(--text);
+
+    overflow-x:hidden;
+
+}
+
+/* =========================================================
+   GLOBAL CANVAS
+========================================================= */
+
+#particles{
+
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    z-index:-10;
+
+    pointer-events:none;
+
+}
+
+.grid{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:-9;
+
+    pointer-events:none;
+
+    background-image:
+
+        linear-gradient(
+            rgba(0,229,255,.025) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(0,229,255,.025) 1px,
+            transparent 1px
+        );
+
+    background-size:60px 60px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent
+        );
+
+}
+
+/* =========================================================
+   GLOW ORBS
+========================================================= */
+
+.orb{
+
+    position:fixed;
+
+    border-radius:50%;
+
+    filter:blur(100px);
+
+    pointer-events:none;
+
+    z-index:-8;
+
+    opacity:.35;
+
+}
+
+.orb1{
+
+    width:350px;
+    height:350px;
+
+    background:#008cff;
+
+    left:-180px;
+    top:10%;
+
+}
+
+.orb2{
+
+    width:400px;
+    height:400px;
+
+    background:#7b2cff;
+
+    right:-200px;
+    top:30%;
+
+}
+
+.orb3{
+
+    width:300px;
+    height:300px;
+
+    background:#ff0077;
+
+    left:40%;
+    bottom:-150px;
+
+}
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+.loader{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:99999;
+
+    background:#03050d;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    transition:1s;
+
+}
+
+.loader.hide{
+
+    opacity:0;
+
+    visibility:hidden;
+
+}
+
+.loader-name{
+
+    font-family:"Space Grotesk";
+
+    font-size:3rem;
+
+    font-weight:800;
+
+}
+
+.loader-name span{
+
+    color:var(--cyan);
+
+}
+
+.loader-text{
+
+    color:var(--muted);
+
+    font-size:.7rem;
+
+    letter-spacing:4px;
+
+    margin-top:10px;
+
+}
+
+.loader-line{
+
+    width:230px;
+
+    height:3px;
+
+    background:#182238;
+
+    margin-top:25px;
+
+    overflow:hidden;
+
+}
+
+.loader-line span{
+
+    display:block;
+
+    height:100%;
+
+    width:0;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            var(--blue),
+            var(--cyan),
+            var(--purple),
+            var(--pink)
+        );
+
+    animation:loading 2s forwards;
+
+}
+
+@keyframes loading{
+
+    to{
+        width:100%;
+    }
+
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+nav{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    z-index:5000;
+
+    padding:18px 6%;
+
+    transition:.4s;
+
+}
+
+nav.scrolled{
+
+    background:
+        rgba(5,8,22,.75);
+
+    backdrop-filter:blur(20px);
+
+    border-bottom:
+        1px solid var(--border);
+
+}
+
+.nav-container{
+
+    max-width:1250px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+.logo{
+
+    font-family:"Space Grotesk";
+
+    text-decoration:none;
+
+    color:white;
+
+    font-size:1.5rem;
+
+    font-weight:800;
+
+}
+
+.logo span{
+
+    color:var(--cyan);
+
+}
+
+.logo b{
+
+    color:var(--pink);
+
+}
+
+.nav-links{
+
+    display:flex;
+
+    gap:27px;
+
+    list-style:none;
+
+}
+
+.nav-links a{
+
+    color:#aebed3;
+
+    text-decoration:none;
+
+    font-size:.75rem;
+
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+.nav-links a:hover{
+
+    color:var(--cyan);
+
+}
+
+.menu{
+
+    display:none;
+
+    font-size:1.4rem;
+
+    cursor:pointer;
+
+}
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+section{
+
+    max-width:1300px;
+
+    margin:auto;
+
+    padding:120px 6%;
+
+}
+
+.reveal{
+
+    opacity:0;
+
+    transform:translateY(50px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s cubic-bezier(.2,.8,.2,1);
+
+}
+
+.reveal.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+.section-heading{
+
+    text-align:center;
+
+    margin-bottom:65px;
+
+}
+
+.section-label{
+
+    color:var(--cyan);
+
+    font-size:.7rem;
+
+    font-weight:800;
+
+    letter-spacing:4px;
+
+}
+
+.section-title{
+
+    font-family:"Space Grotesk";
+
+    font-size:
+        clamp(
+            2.3rem,
+            5vw,
+            4.2rem
+        );
+
+    margin-top:12px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            white,
+            #8eefff,
+            white
+        );
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    padding-top:130px;
+
+}
+
+.hero-grid{
+
+    width:100%;
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:50px;
+
+    align-items:center;
+
+}
+
+/* =========================================================
+   HERO TEXT
+========================================================= */
+
+.hero-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:10px 16px;
+
+    border-radius:50px;
+
+    background:
+        rgba(0,229,255,.07);
+
+    border:
+        1px solid
+        rgba(0,229,255,.25);
+
+    color:var(--cyan);
+
+    font-size:.68rem;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+
+}
+
+.hero-badge i{
+
+    font-size:.45rem;
+
+    animation:blink 1s infinite;
+
+}
+
+@keyframes blink{
+
+    50%{
+        opacity:.2;
+    }
+
+}
+
+.hero h1{
+
+    font-family:"Space Grotesk";
+
+    font-size:
+        clamp(
+            4rem,
+            7vw,
+            7rem
+        );
+
+    line-height:.84;
+
+    letter-spacing:-6px;
+
+    margin-top:28px;
+
+}
+
+.hero h1 .name{
+
+    color:white;
+
+}
+
+.hero h1 .gradient{
+
+    background:
+
+        linear-gradient(
+            90deg,
+            var(--cyan),
+            var(--blue),
+            var(--purple),
+            var(--pink)
+        );
+
+    background-size:300%;
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    animation:
+        gradientMove 5s infinite;
+
+}
+
+@keyframes gradientMove{
+
+    0%,100%{
+        background-position:0%;
+    }
+
+    50%{
+        background-position:100%;
+    }
+
+}
+
+.hero-role{
+
+    margin-top:30px;
+
+    font-size:1.15rem;
+
+    font-weight:800;
+
+}
+
+.hero-role span{
+
+    color:var(--pink);
+
+    margin:0 8px;
+
+}
+
+.hero-description{
+
+    max-width:650px;
+
+    color:var(--muted);
+
+    line-height:1.9;
+
+    font-size:.92rem;
+
+    margin-top:18px;
+
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-top:30px;
+
+}
+
+.btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    padding:14px 20px;
+
+    border-radius:13px;
+
+    text-decoration:none;
+
+    font-size:.75rem;
+
+    font-weight:800;
+
+    transition:.35s;
+
+}
+
+.btn:hover{
+
+    transform:
+        translateY(-5px)
+        scale(1.02);
+
+}
+
+.btn-primary{
+
+    color:white;
+
+    background:
+
+        linear-gradient(
+            120deg,
+            #009dff,
+            #00e5ff
+        );
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,180,255,.25);
+
+}
+
+.btn-pink{
+
+    color:white;
+
+    background:
+
+        linear-gradient(
+            120deg,
+            #ff287d,
+            #8b5cf6
+        );
+
+    box-shadow:
+        0 15px 40px
+        rgba(255,40,125,.22);
+
+}
+
+.btn-outline{
+
+    color:white;
+
+    border:
+        1px solid
+        rgba(255,255,255,.16);
+
+    background:
+        rgba(255,255,255,.04);
+
+}
+
+/* =========================================================
+   GRAPHICAL STUDENT SCENE
+========================================================= */
+
+.scene{
+
+    height:550px;
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+/* FLOOR */
+
+.floor{
+
+    position:absolute;
+
+    bottom:35px;
+
+    width:430px;
+
+    height:80px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(0,229,255,.25),
+            transparent 70%
+        );
+
+    filter:blur(5px);
+
+}
+
+/* STUDENT */
+
+.student{
+
+    position:absolute;
+
+    bottom:90px;
+
+    left:50%;
+
+    transform:
+        translateX(-50%);
+
+    width:190px;
+
+    height:270px;
+
+    animation:
+        studentFloat 4s ease-in-out infinite;
+
+}
+
+@keyframes studentFloat{
+
+    50%{
+
+        transform:
+            translateX(-50%)
+            translateY(-10px);
+
+    }
+
+}
+
+/* HEAD */
+
+.head{
+
+    position:absolute;
+
+    width:72px;
+
+    height:78px;
+
+    border-radius:
+        45% 45% 48% 48%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f8c7a7,
+            #d88f6d
+        );
+
+    left:59px;
+
+    top:5px;
+
+    z-index:5;
+
+}
+
+/* HAIR */
+
+.hair{
+
+    position:absolute;
+
+    width:77px;
+
+    height:48px;
+
+    left:56px;
+
+    top:-3px;
+
+    border-radius:
+        55% 55% 25% 20%;
+
+    background:
+        linear-gradient(
+            120deg,
+            #10131a,
+            #252b35
+        );
+
+    z-index:6;
+
+}
+
+/* HAIR SPIKES */
+
+.hair:after{
+
+    content:"";
+
+    position:absolute;
+
+    width:25px;
+
+    height:25px;
+
+    background:#151922;
+
+    left:-4px;
+
+    top:12px;
+
+    transform:
+        rotate(-25deg);
+
+}
+
+/* FACE */
+
+.face{
+
+    position:absolute;
+
+    width:8px;
+
+    height:8px;
+
+    background:#25252a;
+
+    border-radius:50%;
+
+    top:39px;
+
+    left:15px;
+
+    box-shadow:
+        37px 0 #25252a;
+
+}
+
+.face:after{
+
+    content:"";
+
+    position:absolute;
+
+    width:18px;
+
+    height:7px;
+
+    border-bottom:
+        2px solid #7d4434;
+
+    border-radius:50%;
+
+    left:13px;
+
+    top:17px;
+
+}
+
+/* BODY */
+
+.body{
+
+    position:absolute;
+
+    width:105px;
+
+    height:125px;
+
+    left:42px;
+
+    top:78px;
+
+    border-radius:
+        30px 30px 15px 15px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #151c38,
+            #27335e
+        );
+
+}
+
+/* SHIRT GLOW */
+
+.body:before{
+
+    content:"DATA";
+
+    position:absolute;
+
+    color:var(--cyan);
+
+    font-family:"Space Grotesk";
+
+    font-weight:800;
+
+    font-size:.65rem;
+
+    letter-spacing:2px;
+
+    left:28px;
+
+    top:45px;
+
+    text-shadow:
+        0 0 10px var(--cyan);
+
+}
+
+/* ARM LEFT */
+
+.arm-left{
+
+    position:absolute;
+
+    width:25px;
+
+    height:100px;
+
+    background:#1b2444;
+
+    border-radius:20px;
+
+    left:24px;
+
+    top:90px;
+
+    transform:
+        rotate(28deg);
+
+}
+
+/* ARM RIGHT */
+
+.arm-right{
+
+    position:absolute;
+
+    width:25px;
+
+    height:100px;
+
+    background:#1b2444;
+
+    border-radius:20px;
+
+    right:20px;
+
+    top:90px;
+
+    transform:
+        rotate(-35deg);
+
+}
+
+/* HAND */
+
+.hand{
+
+    position:absolute;
+
+    width:21px;
+
+    height:21px;
+
+    border-radius:50%;
+
+    background:#e3a381;
+
+}
+
+.hand.left{
+
+    left:11px;
+
+    top:169px;
+
+}
+
+.hand.right{
+
+    right:3px;
+
+    top:166px;
+
+}
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+.laptop{
+
+    position:absolute;
+
+    width:300px;
+
+    height:185px;
+
+    left:50%;
+
+    bottom:95px;
+
+    transform:
+        translateX(-50%);
+
+    z-index:20;
+
+    animation:
+        laptopGlow 3s infinite;
+
+}
+
+@keyframes laptopGlow{
+
+    50%{
+
+        filter:
+            drop-shadow(
+                0 0 25px
+                rgba(0,229,255,.25)
+            );
+
+    }
+
+}
+
+.screen{
+
+    position:absolute;
+
+    width:260px;
+
+    height:160px;
+
+    left:20px;
+
+    top:0;
+
+    border-radius:13px;
+
+    border:
+        7px solid #202a3a;
+
+    background:#050914;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,.5);
+
+}
+
+/* LAPTOP SCREEN GRAPHICS */
+
+.screen-grid{
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+
+        linear-gradient(
+            rgba(0,229,255,.08) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(0,229,255,.08) 1px,
+            transparent 1px
+        );
+
+    background-size:25px 25px;
+
+}
+
+/* GRAPH */
+
+.graph{
+
+    position:absolute;
+
+    left:20px;
+
+    right:20px;
+
+    bottom:22px;
+
+    height:80px;
+
+}
+
+.graph svg{
+
+    width:100%;
+
+    height:100%;
+
+    overflow:visible;
+
+}
+
+.graph-path{
+
+    fill:none;
+
+    stroke:
+        var(--cyan);
+
+    stroke-width:3;
+
+    stroke-linecap:round;
+
+    stroke-dasharray:400;
+
+    stroke-dashoffset:400;
+
+    animation:
+        drawGraph 3s infinite;
+
+    filter:
+        drop-shadow(
+            0 0 6px
+            var(--cyan)
+        );
+
+}
+
+@keyframes drawGraph{
+
+    0%{
+        stroke-dashoffset:400;
+    }
+
+    60%,100%{
+        stroke-dashoffset:0;
+    }
+
+}
+
+.chart-bars{
+
+    position:absolute;
+
+    display:flex;
+
+    gap:6px;
+
+    right:18px;
+
+    top:18px;
+
+    align-items:end;
+
+}
+
+.chart-bars span{
+
+    width:8px;
+
+    border-radius:4px 4px 0 0;
+
+    background:
+        linear-gradient(
+            to top,
+            var(--purple),
+            var(--pink)
+        );
+
+    animation:
+        bars 1.5s infinite alternate;
+
+}
+
+.chart-bars span:nth-child(1){
+    height:20px;
+}
+
+.chart-bars span:nth-child(2){
+    height:35px;
+    animation-delay:.2s;
+}
+
+.chart-bars span:nth-child(3){
+    height:55px;
+    animation-delay:.4s;
+}
+
+.chart-bars span:nth-child(4){
+    height:42px;
+    animation-delay:.6s;
+}
+
+.chart-bars span:nth-child(5){
+    height:68px;
+    animation-delay:.8s;
+}
+
+@keyframes bars{
+
+    to{
+        transform:
+            scaleY(.45);
+    }
+
+}
+
+.screen-code{
+
+    position:absolute;
+
+    left:18px;
+
+    top:15px;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-family:monospace;
+
+    font-size:7px;
+
+    line-height:1.8;
+
+}
+
+/* LAPTOP BASE */
+
+.keyboard{
+
+    position:absolute;
+
+    width:300px;
+
+    height:25px;
+
+    left:0;
+
+    bottom:0;
+
+    border-radius:
+        5px 5px 18px 18px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #566176,
+            #242d3e
+        );
+
+    transform:
+        perspective(300px)
+        rotateX(50deg);
+
+}
+
+/* =========================================================
+   FLOATING TECH CARDS
+========================================================= */
+
+.tech-card{
+
+    position:absolute;
+
+    padding:12px 16px;
+
+    border-radius:14px;
+
+    background:
+        rgba(10,18,40,.78);
+
+    backdrop-filter:blur(14px);
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,.35);
+
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    font-size:.7rem;
+
+    font-weight:800;
+
+    z-index:40;
+
+    animation:
+        techFloat 4s ease-in-out infinite;
+
+}
+
+.tech-card i{
+
+    font-size:1.2rem;
+
+}
+
+.python{
+
+    top:45px;
+
+    left:4%;
+
+    color:#4db8ff;
+
+}
+
+.sql{
+
+    top:120px;
+
+    right:2%;
+
+    color:#00e5ff;
+
+    animation-delay:1s;
+
+}
+
+.powerbi{
+
+    bottom:100px;
+
+    right:0;
+
+    color:#ffd43b;
+
+    animation-delay:2s;
+
+}
+
+.excel{
+
+    bottom:60px;
+
+    left:2%;
+
+    color:#40d890;
+
+    animation-delay:3s;
+
+}
+
+@keyframes techFloat{
+
+    50%{
+
+        transform:
+            translateY(-15px)
+            rotate(2deg);
+
+    }
+
+}
+
+/* =========================================================
+   DATA STREAMS
+========================================================= */
+
+.data-stream{
+
+    position:absolute;
+
+    width:2px;
+
+    height:150px;
+
+    background:
+
+        linear-gradient(
+            to bottom,
+            transparent,
+            var(--cyan),
+            transparent
+        );
+
+    opacity:.7;
+
+    animation:
+        stream 2s linear infinite;
+
+}
+
+.s1{
+
+    left:25%;
+
+    top:0;
+
+}
+
+.s2{
+
+    right:25%;
+
+    bottom:0;
+
+    animation-delay:1s;
+
+}
+
+@keyframes stream{
+
+    from{
+        transform:translateY(-100px);
+        opacity:0;
+    }
+
+    50%{
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(150px);
+        opacity:0;
+    }
+
+}
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:22px;
+
+}
+
+.glass{
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.08),
+            rgba(255,255,255,.025)
+        );
+
+    border:
+        1px solid
+        var(--border);
+
+    backdrop-filter:
+        blur(20px);
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.2);
+
+}
+
+.about-card{
+
+    padding:35px;
+
+    border-radius:25px;
+
+    transition:.4s;
+
+}
+
+.about-card:hover{
+
+    transform:
+        translateY(-10px);
+
+    border-color:
+        rgba(0,229,255,.3);
+
+}
+
+.about-card h3{
+
+    font-family:"Space Grotesk";
+
+    margin-bottom:15px;
+
+}
+
+.about-card h3 i{
+
+    color:var(--cyan);
+
+    margin-right:8px;
+
+}
+
+.about-card p{
+
+    color:var(--muted);
+
+    line-height:1.9;
+
+}
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:15px;
+
+    margin-top:20px;
+
+}
+
+.stat{
+
+    text-align:center;
+
+    padding:27px;
+
+    border-radius:20px;
+
+    transition:.4s;
+
+}
+
+.stat:hover{
+
+    transform:
+        translateY(-8px)
+        scale(1.02);
+
+}
+
+.stat i{
+
+    color:var(--cyan);
+
+    font-size:1.5rem;
+
+}
+
+.stat:nth-child(2) i{
+    color:var(--purple);
+}
+
+.stat:nth-child(3) i{
+    color:var(--orange);
+}
+
+.stat:nth-child(4) i{
+    color:var(--pink);
+}
+
+.stat strong{
+
+    display:block;
+
+    font-family:"Space Grotesk";
+
+    font-size:2rem;
+
+    margin-top:8px;
+
+}
+
+.stat span{
+
+    color:var(--muted);
+
+    font-size:.68rem;
+
+}
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
+.skills-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:18px;
+
+}
+
+.skill-card{
+
+    padding:27px;
+
+    border-radius:23px;
+
+    transition:.4s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.skill-card:before{
+
+    content:"";
+
+    position:absolute;
+
+    width:100px;
+
+    height:100px;
+
+    border-radius:50%;
+
+    background:
+        rgba(0,229,255,.08);
+
+    right:-40px;
+
+    top:-40px;
+
+}
+
+.skill-card:hover{
+
+    transform:
+        translateY(-10px)
+        rotateX(3deg);
+
+}
+
+.skill-icon{
+
+    width:58px;
+
+    height:58px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:16px;
+
+    background:
+        rgba(0,229,255,.08);
+
+    font-size:1.6rem;
+
+    margin-bottom:18px;
+
+}
+
+.skill-card h3{
+
+    font-family:"Space Grotesk";
+
+}
+
+.skill-card p{
+
+    color:var(--muted);
+
+    font-size:.73rem;
+
+    line-height:1.6;
+
+    margin-top:8px;
+
+}
+
+.progress{
+
+    height:5px;
+
+    background:#172238;
+
+    border-radius:10px;
+
+    margin-top:18px;
+
+    overflow:hidden;
+
+}
+
+.progress span{
+
+    display:block;
+
+    width:0;
+
+    height:100%;
+
+    border-radius:10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--blue),
+            var(--cyan),
+            var(--purple)
+        );
+
+    transition:2s;
+
+}
+
+.skill-card.show
+.progress span{
+
+    width:var(--skill);
+
+}
+
+/* =========================================================
+   TECH STACK
+========================================================= */
+
+.tech-stack{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin-top:30px;
+
+}
+
+.tech-pill{
+
+    padding:11px 16px;
+
+    border-radius:12px;
+
+    border:
+        1px solid
+        var(--border);
+
+    background:
+        rgba(255,255,255,.035);
+
+    color:#b8c8dc;
+
+    font-size:.7rem;
+
+    font-weight:800;
+
+    transition:.3s;
+
+}
+
+.tech-pill:hover{
+
+    color:white;
+
+    border-color:var(--cyan);
+
+    box-shadow:
+        0 0 20px
+        rgba(0,229,255,.15);
+
+    transform:
+        translateY(-5px);
+
+}
+
+/* =========================================================
+   PROJECTS
+========================================================= */
+
+.projects{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:25px;
+
+}
+
+.project{
+
+    min-height:330px;
+
+    padding:35px;
+
+    border-radius:26px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    transition:.5s;
+
+}
+
+.project:before{
+
+    content:"";
+
+    position:absolute;
+
+    width:250px;
+
+    height:250px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,229,255,.15),
+            transparent 70%
+        );
+
+    right:-100px;
+
+    bottom:-100px;
+
+}
+
+.project:hover{
+
+    transform:
+        translateY(-12px);
+
+    border-color:
+        rgba(0,229,255,.3);
+
+}
+
+.project-number{
+
+    font-family:"Space Grotesk";
+
+    font-size:4rem;
+
+    color:
+        rgba(255,255,255,.05);
+
+}
+
+.project-label{
+
+    color:var(--pink);
+
+    font-size:.65rem;
+
+    font-weight:800;
+
+    letter-spacing:3px;
+
+}
+
+.project h3{
+
+    font-family:"Space Grotesk";
+
+    font-size:1.6rem;
+
+    margin-top:10px;
+
+}
+
+.project p{
+
+    color:var(--muted);
+
+    line-height:1.8;
+
+    margin-top:14px;
+
+}
+
+.tags{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:8px;
+
+    margin-top:20px;
+
+}
+
+.tag{
+
+    padding:7px 10px;
+
+    border-radius:8px;
+
+    background:
+        rgba(0,229,255,.08);
+
+    color:#72eaff;
+
+    font-size:.62rem;
+
+    font-weight:800;
+
+}
+
+/* =========================================================
+   EDUCATION
+========================================================= */
+
+.timeline{
+
+    max-width:900px;
+
+    margin:auto;
+
+}
+
+.timeline-item{
+
+    display:grid;
+
+    grid-template-columns:100px 1fr;
+
+    gap:25px;
+
+    margin-bottom:20px;
+
+}
+
+.year{
+
+    color:var(--cyan);
+
+    font-family:"Space Grotesk";
+
+    font-weight:800;
+
+    padding-top:30px;
+
+}
+
+.edu{
+
+    padding:30px;
+
+    border-radius:22px;
+
+    transition:.4s;
+
+}
+
+.edu:hover{
+
+    transform:
+        translateX(8px);
+
+}
+
+.edu h3{
+
+    font-family:"Space Grotesk";
+
+}
+
+.degree{
+
+    color:var(--pink);
+
+    font-weight:800;
+
+    margin-top:7px;
+
+}
+
+.edu p{
+
+    color:var(--muted);
+
+    margin-top:7px;
+
+    font-size:.8rem;
+
+}
+
+/* =========================================================
+   CERTIFICATIONS
+========================================================= */
+
+.cert-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:15px;
+
+}
+
+.cert{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:22px;
+
+    border-radius:18px;
+
+    transition:.4s;
+
+}
+
+.cert:hover{
+
+    transform:
+        translateX(8px);
+
+    border-color:
+        rgba(139,92,246,.35);
+
+}
+
+.cert-icon{
+
+    min-width:48px;
+
+    height:48px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:14px;
+
+    background:
+        rgba(139,92,246,.1);
+
+    color:#a987ff;
+
+}
+
+.cert p{
+
+    color:#aebed3;
+
+    font-size:.75rem;
+
+    line-height:1.6;
+
+}
+
+/* =========================================================
+   ACTIVITIES
+========================================================= */
+
+.activities{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:20px;
+
+}
+
+.activity{
+
+    padding:30px;
+
+    border-radius:22px;
+
+}
+
+.activity h3{
+
+    font-family:"Space Grotesk";
+
+    margin-bottom:15px;
+
+}
+
+.activity h3 i{
+
+    color:var(--orange);
+
+    margin-right:8px;
+
+}
+
+.activity ul{
+
+    padding-left:18px;
+
+}
+
+.activity li{
+
+    color:var(--muted);
+
+    margin-bottom:10px;
+
+    line-height:1.7;
+
+}
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact{
+
+    text-align:center;
+
+    padding:80px 30px;
+
+    border-radius:35px;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.contact:before{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+
+    height:500px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,229,255,.12),
+            transparent 70%
+        );
+
+    left:-200px;
+
+    top:-300px;
+
+}
+
+.contact h2{
+
+    font-family:"Space Grotesk";
+
+    font-size:
+        clamp(
+            2.5rem,
+            5vw,
+            4.5rem
+        );
+
+}
+
+.contact h2 span{
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--cyan),
+            var(--pink)
+        );
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+}
+
+.contact p{
+
+    color:var(--muted);
+
+    max-width:650px;
+
+    margin:15px auto;
+
+    line-height:1.8;
+
+}
+
+.contact-info{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:20px;
+
+    margin:25px 0;
+
+}
+
+.contact-info a,
+.contact-info span{
+
+    color:#aebed3;
+
+    text-decoration:none;
+
+    font-size:.75rem;
+
+}
+
+.contact-info i{
+
+    color:var(--cyan);
+
+    margin-right:6px;
+
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+
+    text-align:center;
+
+    padding:35px;
+
+    color:#64758b;
+
+    border-top:
+        1px solid
+        var(--border);
+
+    font-size:.7rem;
+
+}
+
+footer strong{
+
+    color:var(--cyan);
+
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1050px){
+
+    .hero-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .hero-text{
+
+        max-width:750px;
+
+    }
+
+    .scene{
+
+        max-width:650px;
+
+        width:100%;
+
+        margin:auto;
+
+    }
+
+    .skills-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+    .stats{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:750px){
+
+    .nav-links{
+
+        display:none;
+
+        position:absolute;
+
+        top:70px;
+
+        right:5%;
+
+        width:230px;
+
+        padding:20px;
+
+        flex-direction:column;
+
+        background:
+            rgba(7,12,30,.95);
+
+        backdrop-filter:blur(20px);
+
+        border:
+            1px solid
+            var(--border);
+
+        border-radius:18px;
+
+    }
+
+    .nav-links.active{
+
+        display:flex;
+
+    }
+
+    .menu{
+
+        display:block;
+
+    }
+
+    section{
+
+        padding:
+            90px 5%;
+
+    }
+
+    .hero{
+
+        padding-top:120px;
+
+    }
+
+    .hero h1{
+
+        font-size:3.5rem;
+
+        letter-spacing:-4px;
+
+    }
+
+    .hero-buttons .btn{
+
+        width:100%;
+
+        justify-content:center;
+
+    }
+
+    .scene{
+
+        height:450px;
+
+        transform:
+            scale(.85);
+
+    }
+
+    .about-grid,
+    .projects,
+    .cert-grid,
+    .activities{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .skills-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .timeline-item{
+
+        grid-template-columns:1fr;
+
+        gap:5px;
+
+    }
+
+    .year{
+
+        padding-top:0;
+
+    }
+
+    .tech-card{
+
+        transform:scale(.8);
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .stats{
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+    .scene{
+
+        transform:
+            scale(.68);
+
+        width:145%;
+
+        margin-left:-22%;
+
+    }
+
+}
+
+/* =========================================================
+   MOUSE GLOW
+========================================================= */
+
+.mouse-glow{
+
+    position:fixed;
+
+    width:300px;
+
+    height:300px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:-7;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,229,255,.07),
+            transparent 70%
+        );
+
+    transform:
+        translate(-50%,-50%);
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================================================
+     LOADER
+========================================================= -->
+
+<div class="loader" id="loader">
+
+    <div class="loader-name">
+        ARUNPRASATH<span>.</span>M
+    </div>
+
+    <div class="loader-text">
+      WELCOME    </div>
+
+    <div class="loader-line">
+        <span></span>
+    </div>
+
+</div>
+
+
+<!-- BACKGROUND -->
+
+<canvas id="particles"></canvas>
+
+<div class="grid"></div>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<div class="mouse-glow" id="mouseGlow"></div>
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<nav id="navbar">
+
+<div class="nav-container">
+
+<a href="#home" class="logo">
+Let's see<span> </span><b>Who I Am</b>
+</a>
+
+<ul class="nav-links" id="navLinks">
+
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#education">Education</a></li>
+<li><a href="#certifications">Certificates</a></li>
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+<div class="menu" id="menu">
+
+<i class="fa-solid fa-bars"></i>
+
+</div>
+
+</div>
+
+</nav>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero" id="home">
+
+<div class="hero-grid">
+
+<!-- LEFT -->
+
+<div class="reveal">
+
+<div class="hero-badge">
+
+<i class="fa-solid fa-circle"></i>
+
+COMPUTER SCIENCE WITH DATA SCIENCE
+
+</div>
+
+<h1>
+
+<span class="name">
+
+</span>
+
+<br>
+
+<span class="gradient">
+ARUNPRASATH.M
+
+</span>
+
+</h1>
+
+<div class="hero-role">
+
+DATA ANALYTICS
+
+<span>•</span>
+
+DATA SCIENCE
+
+<span>•</span>
+
+TECHNOLOGY
+
+</div>
+
+<p class="hero-description">
+
+Computer Science with Data Science undergraduate with
+hands-on experience in Python, SQL, Microsoft Excel,
+Power BI, data cleaning, data validation, statistical
+analysis and trend analysis. Passionate about transforming
+data into meaningful insights while continuously learning
+new technologies.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#projects"
+class="btn btn-primary">
+
+<i class="fa-solid fa-chart-line"></i>
+
+Explore Projects
+
+</a>
+
+<a href="#contact"
+class="btn btn-pink">
+
+<i class="fa-solid fa-paper-plane"></i>
+
+Let's Connect
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     GRAPHICAL STUDENT
+===================================================== -->
+
+<div class="scene reveal">
+
+<div class="floor"></div>
+
+
+<!-- FLOATING TECHNOLOGY -->
+
+<div class="tech-card python">
+
+<i class="fa-brands fa-python"></i>
+
+Python
+
+</div>
+
+<div class="tech-card sql">
+
+<i class="fa-solid fa-database"></i>
+
+SQL
+
+</div>
+
+<div class="tech-card powerbi">
+
+<i class="fa-solid fa-chart-pie"></i>
+
+Power BI
+
+</div>
+
+<div class="tech-card excel">
+
+<i class="fa-solid fa-table"></i>
+
+Excel
+
+</div>
+
+
+<!-- DATA STREAMS -->
+
+<div class="data-stream s1"></div>
+<div class="data-stream s2"></div>
+
+
+<!-- STUDENT -->
+
+<div class="student">
+
+<div class="hair"></div>
+
+<div class="head">
+
+<div class="face"></div>
+
+</div>
+
+<div class="body"></div>
+
+<div class="arm-left"></div>
+<div class="arm-right"></div>
+
+<div class="hand left"></div>
+<div class="hand right"></div>
+
+</div>
+
+
+<!-- LAPTOP -->
+
+<div class="laptop">
+
+<div class="screen">
+
+<div class="screen-grid"></div>
+
+<div class="screen-code">
+
+SELECT * FROM DATA;<br>
+data.clean();<br>
+model.fit(X,y);<br>
+result = predict();
+
+</div>
+
+<div class="chart-bars">
+
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+
+</div>
+
+<div class="graph">
+
+<svg viewBox="0 0 250 90">
+
+<path
+class="graph-path"
+d="
+M5 80
+L30 65
+L55 72
+L80 40
+L105 52
+L130 25
+L155 38
+L180 15
+L205 28
+L245 5
+"/>
+
+</svg>
+
+</div>
+
+</div>
+
+<div class="keyboard"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
+<section id="about">
+
+<div class="section-heading reveal">
+
+<div class="section-label">
+ABOUT ME
+</div>
+
+<h2 class="section-title">
+Turning Data Into Possibilities
+</h2>
+
+</div>
+
+
+<div class="about-grid">
+
+<div class="glass about-card reveal">
+
+<h3>
+
+<i class="fa-solid fa-user"></i>
+
+ Professional Overview 
+
+</h3>
+
+<p>
+
+I am a Computer Science with Data Science undergraduate
+at Prince Shri Venkateshwara Arts and Science College,
+Chennai. I have a strong interest in Data Analytics,
+Data Science and Software Development.
+
+</p>
+
+</div>
+
+
+<div class="glass about-card reveal">
+
+<h3>
+
+<i class="fa-solid fa-brain"></i>
+
+What I Do
+
+</h3>
+
+<p>
+
+I enjoy working with data, solving problems and developing
+academic projects. My technical foundation includes Python,
+SQL, Excel, Power BI, web technologies and analytical
+techniques.
+
+</p>
+
+</div>
+
+</div>
+
+
+<div class="stats">
+
+<div class="glass stat reveal">
+
+<i class="fa-solid fa-graduation-cap"></i>
+
+<strong>8.2</strong>
+
+<span>
+Overall CGPA
+</span>
+
+</div>
+
+
+<div class="glass stat reveal">
+
+<i class="fa-solid fa-code"></i>
+
+<strong>3+</strong>
+
+<span>
+Programming Languages
+</span>
+
+</div>
+
+
+<div class="glass stat reveal">
+
+<i class="fa-solid fa-chart-simple"></i>
+
+<strong>5+</strong>
+
+<span>
+Data Skills
+</span>
+
+</div>
+
+
+<div class="glass stat reveal">
+
+<i class="fa-solid fa-certificate"></i>
+
+<strong>6+</strong>
+
+<span>
+Certifications
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     SKILLS
+========================================================= -->
+
+<section id="skills">
+
+<div class="section-heading reveal">
+
+<div class="section-label">
+TECHNICAL SKILLS
+</div>
+
+<h2 class="section-title">
+My Data Toolkit
+</h2>
+
+</div>
+
+
+<div class="skills-grid">
+
+
+<div class="glass skill-card reveal"
+style="--skill:90%">
+
+<div class="skill-icon"
+style="color:#4db8ff">
+
+<i class="fa-brands fa-python"></i>
+
+</div>
+
+<h3>
+Python
+</h3>
+
+<p>
+Programming, data analysis and problem solving.
+</p>
+
+<div class="progress">
+<span></span>
+</div>
+
+</div>
+
+
+<div class="glass skill-card reveal"
+style="--skill:85%">
+
+<div class="skill-icon"
+style="color:#00e5ff">
+
+<i class="fa-solid fa-database"></i>
+
+</div>
+
+<h3>
+SQL
+</h3>
+
+<p>
+Database querying and data operations.
+</p>
+
+<div class="progress">
+<span></span>
+</div>
+
+</div>
+
+
+<div class="glass skill-card reveal"
+style="--skill:82%">
+
+<div class="skill-icon"
+style="color:#ffd43b">
+
+<i class="fa-solid fa-chart-pie"></i>
+
+</div>
+
+<h3>
+Power BI
+</h3>
+
+<p>
+Dashboards and data visualization.
+</p>
+
+<div class="progress">
+<span></span>
+</div>
+
+</div>
+
+
+<div class="glass skill-card reveal"
+style="--skill:88%">
+
+<div class="skill-icon"
+style="color:#40d890">
+
+<i class="fa-solid fa-table"></i>
+
+</div>
+
+<h3>
+Microsoft Excel
+</h3>
+
+<p>
+Data organization and analytical reporting.
+</p>
+
+<div class="progress">
+<span></span>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="tech-stack reveal">
+
+<div class="tech-pill">Python</div>
+<div class="tech-pill">Java</div>
+<div class="tech-pill">C++</div>
+<div class="tech-pill">SQL</div>
+<div class="tech-pill">Power BI</div>
+<div class="tech-pill">Excel</div>
+<div class="tech-pill">Data Cleaning</div>
+<div class="tech-pill">Data Validation</div>
+<div class="tech-pill">Statistical Analysis</div>
+<div class="tech-pill">Trend Analysis</div>
+<div class="tech-pill">HTML</div>
+<div class="tech-pill">CSS</div>
+<div class="tech-pill">JavaScript</div>
+<div class="tech-pill">Unreal Engine</div>
+<div class="tech-pill">3D Modeling</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     PROJECTS
+========================================================= -->
+
+<section id="projects">
+
+<div class="section-heading reveal">
+
+<div class="section-label">
+PROJECTS
+</div>
+
+<h2 class="section-title">
+My Creative Work
+</h2>
+
+</div>
+
+
+<div class="projects">
+
+
+<div class="glass project reveal">
+
+<div class="project-number">
+01
+</div>
+
+<div class="project-label">
+WEB APPLICATION
+</div>
+
+<h3>
+Remote Area Accident Detection
+</h3>
+
+<p>
+
+Developed a web-based solution focused on improving
+accident information sharing in remote areas.
+
+</p>
+
+<div class="tags">
+
+<span class="tag">
+HTML
+</span>
+
+<span class="tag">
+CSS
+</span>
+
+<span class="tag">
+JavaScript
+</span>
+
+<span class="tag">
+Web Development
+</span>
+
+</div>
+
+</div>
+
+
+<div class="glass project reveal">
+
+<div class="project-number">
+02
+</div>
+
+<div class="project-label">
+VIRTUAL REALITY
+</div>
+
+<h3>
+Virtual Reality Mini Project
+</h3>
+
+<p>
+
+Created an immersive virtual environment featuring
+a natural park landscape using Unreal Engine,
+programming and 3D modeling techniques.
+
+</p>
+
+<div class="tags">
+
+<span class="tag">
+Unreal Engine
+</span>
+
+<span class="tag">
+C++
+</span>
+
+<span class="tag">
+C
+</span>
+
+<span class="tag">
+JavaScript
+</span>
+
+<span class="tag">
+3D Modeling
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     EDUCATION
+========================================================= -->
+
+<section id="education">
+
+<div class="section-heading reveal">
+
+<div class="section-label">
+EDUCATION
+</div>
+
+<h2 class="section-title">
+Academic Journey
+</h2>
+
+</div>
+
+
+<div class="timeline">
+
+
+<div class="timeline-item reveal">
+
+<div class="year">
+
+2024<br>
+Present
+
+</div>
+
+<div class="glass edu">
+
+<h3>
+Prince Shri Venkateshwara Arts and Science College
+</h3>
+
+<div class="degree">
+
+B.Sc. Computer Science with Data Science
+
+</div>
+
+<p>
+Chennai, India
+</p>
+
+<p>
+Overall CGPA:
+<strong>8.2</strong>
+</p>
+
+</div>
+
+</div>
+
+
+<div class="timeline-item reveal">
+
+<div class="year">
+2023
+</div>
+
+<div class="glass edu">
+
+<h3>
+Sri Ramakrishna Matriculation Higher Secondary School
+</h3>
+
+<div class="degree">
+Higher Secondary Certificate
+</div>
+
+<p>
+HSC: <strong>70.3%</strong>
+</p>
+
+</div>
+
+</div>
+
+
+<div class="timeline-item reveal">
+
+<div class="year">
+2020
+</div>
+
+<div class="glass edu">
+
+<h3>
+Sri Ramakrishna Matriculation Higher Secondary School
+</h3>
+
+<div class="degree">
+Secondary School Leaving Certificate
+</div>
+
+<p>
+SSLC: <strong>70.2%</strong>
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     CERTIFICATIONS
+========================================================= -->
+
+<section id="certifications">
+
+<div class="section-heading reveal">
+
+<div class="section-label">
+CERTIFICATIONS
+</div>
+
+<h2 class="section-title">
+Continuous Learning
+</h2>
+
+</div>
+
+
+<div class="cert-grid">
+
+
+<div class="glass cert reveal">
+
+<div class="cert-icon">
+
+<i class="fa-solid fa-cloud"></i>
+
+</div>
+
+<p>
+Oracle Cloud Infrastructure 2025 –
+Certified AI Foundations Associate
+</p>
+
+</div>
+
+
+<div class="glass cert reveal">
+
+<div class="cert-icon">
+
+<i class="fa-solid fa-brain"></i>
+
+</div>
+
+<p>
+AI/ML Internship Certificate in Data Analytics
+</p>
+
+</div>
+
+
+<div class="glass cert reveal">
+
+<div class="cert-icon">
+
+<i class="fa-solid fa-database"></i>
+
+</div>
+
+<p>
+Advanced SQL: Programming Construct
+& Stored Functions
+</p>
+
+</div>
+
+
+<div class="glass cert reveal">
+
+<div class="cert-icon">
+
+<i class="fa-solid fa-file-excel"></i>
+
+</div>
+
+<p>
+Business Analytics with Excel –
+Beginner Course
+</p>
+
+</div>
+
+
+<div class="glass cert reveal">
+
+<div class="cert-icon">
+
+<i class="fa-solid fa-chart-line"></i>
+
+</div>
+
+<p>
+Introduction to Data Analytics
+</p>
+
+</div>
+
+
+<div class="glass cert reveal">
+
+<div class="cert-icon">
+
+<i class="fa-brands fa-python"></i>
+
+</div>
+
+<p>
+Introduction to Python
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     ACTIVITIES
+========================================================= -->
+
+<section>
+
+<div class="section-heading reveal">
+
+<div class="section-label">
+BEYOND ACADEMICS
+</div>
+
+<h2 class="section-title">
+Leadership & Creativity
+</h2>
+
+</div>
+
+
+<div class="activities">
+
+
+<div class="glass activity reveal">
+
+<h3>
+
+<i class="fa-solid fa-people-group"></i>
+
+National Service Scheme
+
+</h3>
+
+<ul>
+
+<li>
+Participated in NSS community service initiatives.
+</li>
+
+<li>
+Contributed to social awareness and community activities.
+</li>
+
+<li>
+Developed teamwork, communication and leadership skills.
+</li>
+
+</ul>
+
+</div>
+
+
+<div class="glass activity reveal">
+
+<h3>
+
+<i class="fa-solid fa-palette"></i>
+
+Creative Interests
+
+</h3>
+
+<ul>
+
+<li>
+Drawing and Creative Art
+</li>
+
+<li>
+Chess
+</li>
+
+<li>
+Video Editing
+</li>
+
+<li>
+Poster and Graphic Designing
+</li>
+
+<li>
+Photography and Music
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
+
+<section id="contact">
+
+<div class="glass contact reveal">
+
+<div class="section-label">
+CONTACT
+</div>
+
+<h2>
+
+Let's Build Something
+
+<span>
+Meaningful.
+</span>
+
+</h2>
+
+<p>
+
+Interested in Data Analytics, Data Science,
+technology and creative problem solving.
+
+</p>
+
+
+<div class="contact-info">
+
+<a href="mailto:arunprasathmoorthi.718@gmail.com">
+
+<i class="fa-solid fa-envelope"></i>
+
+arunprasathmoorthi.718@gmail.com
+
+</a>
+
+
+<a href="tel:+916383655597">
+
+<i class="fa-solid fa-phone"></i>
+
++91 6383655597
+
+</a>
+
+
+<span>
+
+<i class="fa-solid fa-location-dot"></i>
+
+Chennai, India
+
+</span>
+
+</div>
+
+
+<div class="hero-buttons"
+style="justify-content:center">
+
+<a
+href="mailto:arunprasathmoorthi.718@gmail.com"
+class="btn btn-primary">
+
+<i class="fa-solid fa-envelope"></i>
+
+Email Me
+
+</a>
+
+
+<a
+href="https://www.linkedin.com/in/arunprasath-moorthi-01168a34a?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+target="_blank"
+class="btn btn-pink">
+
+<i class="fa-brands fa-linkedin"></i>
+
+LinkedIn
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+© 2026
+
+<strong>
+Arunprasath M
+</strong>
+
+· Data Science Portfolio
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+window.addEventListener(
+"load",
+function(){
+
+    setTimeout(
+        function(){
+
+            document
+            .getElementById("loader")
+            .classList.add("hide");
+
+        },
+        2000
+    );
+
+});
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+const navbar =
+document.getElementById("navbar");
+
+window.addEventListener(
+"scroll",
+function(){
+
+    if(window.scrollY > 50){
+
+        navbar.classList.add("scrolled");
+
+    }else{
+
+        navbar.classList.remove("scrolled");
+
+    }
+
+});
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const menu =
+document.getElementById("menu");
+
+const navLinks =
+document.getElementById("navLinks");
+
+menu.addEventListener(
+"click",
+function(){
+
+    navLinks.classList.toggle("active");
+
+});
+
+
+document
+.querySelectorAll(".nav-links a")
+.forEach(
+function(link){
+
+    link.addEventListener(
+        "click",
+        function(){
+
+            navLinks
+            .classList
+            .remove("active");
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   REVEAL ANIMATION
+========================================================= */
+
+const observer =
+new IntersectionObserver(
+
+function(entries){
+
+    entries.forEach(
+        function(entry){
+
+            if(entry.isIntersecting){
+
+                entry.target
+                .classList
+                .add("show");
+
+            }
+
+        }
+    );
+
+},
+{
+    threshold:.12
+}
+
+);
+
+
+document
+.querySelectorAll(".reveal")
+.forEach(
+function(element){
+
+    observer.observe(element);
+
+});
+
+
+/* =========================================================
+   MOUSE GLOW
+========================================================= */
+
+const mouseGlow =
+document.getElementById("mouseGlow");
+
+document.addEventListener(
+"mousemove",
+function(event){
+
+    mouseGlow.style.left =
+        event.clientX + "px";
+
+    mouseGlow.style.top =
+        event.clientY + "px";
+
+});
+
+
+/* =========================================================
+   PARTICLE NETWORK
+========================================================= */
+
+const canvas =
+document.getElementById("particles");
+
+const ctx =
+canvas.getContext("2d");
+
+let particles = [];
+
+function resizeCanvas(){
+
+    canvas.width =
+        window.innerWidth;
+
+    canvas.height =
+        window.innerHeight;
+
+}
+
+resizeCanvas();
+
+window.addEventListener(
+"resize",
+resizeCanvas
+);
+
+
+for(
+    let i=0;
+    i<90;
+    i++
+){
+
+    particles.push({
+
+        x:
+            Math.random()
+            *window.innerWidth,
+
+        y:
+            Math.random()
+            *window.innerHeight,
+
+        vx:
+            (Math.random()-.5)
+            *.35,
+
+        vy:
+            (Math.random()-.5)
+            *.35,
+
+        size:
+            Math.random()*2+0.5
+
+    });
+
+}
+
+
+function drawParticles(){
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+
+    particles.forEach(
+        function(p){
+
+            p.x += p.vx;
+            p.y += p.vy;
+
+
+            if(
+                p.x<0 ||
+                p.x>canvas.width
+            ){
+
+                p.vx *= -1;
+
+            }
+
+
+            if(
+                p.y<0 ||
+                p.y>canvas.height
+            ){
+
+                p.vy *= -1;
+
+            }
+
+
+            ctx.beginPath();
+
+            ctx.arc(
+                p.x,
+                p.y,
+                p.size,
+                0,
+                Math.PI*2
+            );
+
+            ctx.fillStyle =
+                "rgba(0,229,255,.55)";
+
+            ctx.fill();
+
+        }
+    );
+
+
+    for(
+        let i=0;
+        i<particles.length;
+        i++
+    ){
+
+        for(
+            let j=i+1;
+            j<particles.length;
+            j++
+        ){
+
+            const a =
+                particles[i];
+
+            const b =
+                particles[j];
+
+            const dx =
+                a.x-b.x;
+
+            const dy =
+                a.y-b.y;
+
+            const distance =
+                Math.sqrt(
+                    dx*dx+
+                    dy*dy
+                );
+
+
+            if(distance < 125){
+
+                ctx.beginPath();
+
+                ctx.moveTo(
+                    a.x,
+                    a.y
+                );
+
+                ctx.lineTo(
+                    b.x,
+                    b.y
+                );
+
+                ctx.strokeStyle =
+                    "rgba(0,180,255,.09)";
+
+                ctx.lineWidth=.7;
+
+                ctx.stroke();
+
+            }
+
+        }
+
+    }
+
+
+    requestAnimationFrame(
+        drawParticles
+    );
+
+}
+
+drawParticles();
+
+
+/* =========================================================
+   RANDOM DATA PULSE
+========================================================= */
+
+setInterval(
+function(){
+
+    const cards =
+        document.querySelectorAll(
+            ".tech-card"
+        );
+
+    cards.forEach(
+        function(card){
+
+            card.style.boxShadow =
+                "0 0 35px rgba(0,229,255,.15)";
+
+            setTimeout(
+                function(){
+
+                    card.style.boxShadow =
+                        "0 20px 50px rgba(0,0,0,.35)";
+
+                },
+                400
+            );
+
+        }
+    );
+
+},
+3000
+);
+
+</script>
+
+</body>
+
+</html>
